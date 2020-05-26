@@ -1,0 +1,4 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("stats", "cor", "pt", "qnorm", "rnorm", "sd")
+importFrom("parallel", "mclapply")
+importFrom("mixed.model.gwas","make.kinship", "mixed.model.gwas")
