@@ -2,10 +2,10 @@
 \alias{safe.scale}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Scale the phenotypes and genotypes in a Dataset
+Scale genotypes in a dosage matrix by subtracting the column means and dividing by the column standard deviations
 }
 \description{
-Scale the phenotypes and genotypes in a Dataset, safely taking into account the possibility a genotype may have zero variance.
+Scale genotypes safely taking into account the possibility a genotype may have zero variance.
 }
 \usage{
 safe.scale(mat)
@@ -28,7 +28,7 @@ Scales the columns of mat by substracting the column mean and dividing by the co
 A matrix with the same dimensions as mat in which each column has been scaled.
 }
 \references{
-Mott et al Genetics 2020
+Mott et al Genetics 2020 https://doi.org/10.1534/genetics.120.303153
 }
 \author{
 Richard Mott
@@ -42,17 +42,4 @@ Richard Mott
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (x)
-{
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

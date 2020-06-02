@@ -12,12 +12,13 @@ make.encrypter( D, blocksize=0 )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{D}{ A Dataset object }
+  \item{D}{ A Dataset object, created by \code{\link{build.D}} }
   \item{blocksize}{Optional size of encryption blocks. Each block of individuals is encrypted separately. If blocksize is zero then a single encrypter is generated.}
 %%     ~~Describe \code{x} here~~
 }
 \details{
-Create random orthogonal encryption keys for the dataset D. Each encryption key is a random orthogonal matrix generated from the Steifel manifold. If the dataset contains \eqn{N} individuals then if \eqn{blocksize>0}, \eqn{N/blocksize + 1} keys are generated. Most keys are of dimension \eqn{blocksize*blocksize} with the final key with smaller dimension to make the sum of the dimensions of the keys equal to \eqn{N}.
+Create random orthogonal encryption keys for the dataset D created by a call to \code{\link{build.D}}. Each encryption key is a random orthogonal matrix generated from the Steifel manifold. If the dataset contains \eqn{N} individuals then if \eqn{blocksize>0}, \eqn{N/blocksize + 1} keys are generated. Most keys are of dimension \eqn{blocksize*blocksize} with the final key with smaller dimension to make the sum of the dimensions of the keys equal to \eqn{N}.
+The Dataset can then be encrypted using the orthogonal keys by \code{\link{encrypt.D}}.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -30,7 +31,7 @@ A list with elements
 %% ...
 }
 \references{
-Mott et al Genetics 2020
+Mott et al Genetics 2020 https://doi.org/10.1534/genetics.120.303153
 }
 \author{
 Richard Mott
@@ -43,18 +44,11 @@ Richard Mott
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{build.D}}
+\code{\link{encrypt.D}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (x)
-{
-  }
-}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+}

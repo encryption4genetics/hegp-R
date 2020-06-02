@@ -19,10 +19,13 @@ qnorm.D(D,digits=NA)
 }
 \details{
 The phenotype \code{D$y} and each column of the genotype matrix \code{D$genos} are replaced by a permutation of the standard Normal quantiles, to improve the security of the encryption. If digits>0 then in addition only the first few decimal digits of each quantil are kept. If digits=NA then no truncation is performed.
+
+This function should be used after encryption by \code{\link{encrypt.D}} to add an additional level of protection to a Dataset.
+
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-A Dataset object with transformed phenotype and genotypes. Other elements of the input Dataset are copied verbatim.
+A Dataset object with quantile-normalised phenotype and genotypes. Other elements of the input Dataset are copied verbatim.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -43,18 +46,11 @@ Richard Mott
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{build.D}}
+\code{\link{encrypt.D}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+\examples{}
 
-## The function is currently defined as
-function (x)
-{
-  }
-}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

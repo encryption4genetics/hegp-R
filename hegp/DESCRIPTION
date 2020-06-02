@@ -1,11 +1,11 @@
 Package: hegp
 Type: Package
 Title: Homomorphic Encryption of Genotypes and Phenotypes
-Version: 0.1.0
+Version: 1.0.0
 Imports: parallel, mixed.model.gwas
 Author: Richard Mott
-Maintainer: The package maintainer <yourself@somewhere.net>
+Maintainer: The package maintainer <r.mott@ucl.ac.uk>
 Description: Uses random orthogonal matrices to homomorphically encrypt phenotypes and genotypes for quantitative genetic analysis.
-License: GPL
+License: GPL3.0
 Encoding: UTF-8
 LazyData: true
