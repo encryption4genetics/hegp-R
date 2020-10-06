@@ -8,12 +8,13 @@ Create encryption keys for a Dataset
 Sample a series of orthogonal matrices suitable for encrypting a given Dataset object.
 }
 \usage{
-make.encrypter( D, blocksize=0 )
+make.encrypter( D, blocksize=0, shuffle=FALSE )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{D}{ A Dataset object, created by \code{\link{build.D}} }
   \item{blocksize}{Optional size of encryption blocks. Each block of individuals is encrypted separately. If blocksize is zero then a single encrypter is generated.}
+  \item{shuffle}{Permute the random numbers as an additional security measure }
 %%     ~~Describe \code{x} here~~
 }
 \details{

@@ -6,7 +6,7 @@
 
 # Generate a set of orthogonal matrices of max dimension <=bloocksize suitable for encrypting genotype dosage and phenotype datasets of the same dimension as the one in D. The dimension of the last matrix is reduced in order to ensure the sum of the dimensions exactly equals the number of individuals in D. If blocksize<=0 then a single block to encrypt the dataset is generated
 
-make.encrypter <- function( D, blocksize=0 ) {
+make.encrypter <- function( D, blocksize=0, shuffle=TRUE ) {
   N = nrow(D$geno)
   if ( blocksize <= 0  ) blocksize = N;
 
@@ -19,7 +19,7 @@ make.encrypter <- function( D, blocksize=0 ) {
   while ( end <= N ) {
     if ( end > N-100 ) end = N
     bsize = end-start+1
-    block[[b]] = rustiefel( bsize, bsize )
+    block[[b]] = rustiefel( bsize, bsize, shuffle )
     df = rbind( df, c(start, end, bsize ))
     start = end+1
     if ( end == N ) {
@@ -166,9 +166,17 @@ basic.mm.gwas <- function( D, mc.cores=10) {
 }
 
 # Simulate a random orthogonal matrix of dimensions m*R using the Steifel Manifold (function adapted from R package rsteifel)
-rustiefel <- function (m, R=m)
+rustiefel <- function (m, R=m, shuffle=TRUE)
 {
-  X <- matrix(rnorm(m * R), m, R)
+  rn = rnorm(m * R)
+  if ( shuffle ) { # permute the random numbers for extra security
+   f = file("/dev/random", "rb")
+   data = readBin(f, integer(), size=4, n = m*R, endian="little")
+   r = order(data)
+   rn = rn[r]
+  }
+
+  X <- matrix(rn, m, R)
   tmp <- eigen(t(X) %*% X)
   X %*% (tmp$vec %*% sqrt(diag(1/tmp$val, nrow = R)) %*% t(tmp$vec))
 }
